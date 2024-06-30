@@ -12,3 +12,21 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Product {
+    id            Int         @id @default(autoincrement())
+    price         Int
+    title         String
+    description   String
+    imageUuid     String[]    
+}
+
+model Image {
+
+    id            Int         @id @default(autoincrement())
+    title         String
+    uuid          String      @unique 
+    productId     Int         
+    isMain        Boolean 
+
+}
