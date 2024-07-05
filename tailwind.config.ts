@@ -8,11 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      backgroundSize: {
+        'full': '100% 100%',
       },
+      backgroundPosition: {
+        'custom-pos': '0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px',
+      },
+      backgroundImage: {
+        'conic-gradient': 'conic-gradient(from 300deg at 50% 50%, hsl(198, 82%, 5%), hsl(265, 100%, 50%), hsl(333, 100%, 50%), hsl(265, 100%, 50%), hsl(198, 82%, 5%))',
+      },
+      colors: {
+        hotPink: 'hsl(315, 100%, 50%)',
+        darkPink: 'hsl(300, 100%, 35%);', 
+        redPink: 'hsl(333, 100%, 50%)',
+        lightPurple: 'hsl(265, 100%, 50%)',
+        darkPurple: 'hsl(265, 100%, 35%)',
+        darkBlue: 'hsl(198, 82%, 5%)',
+      }
     },
   },
   plugins: [],

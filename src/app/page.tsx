@@ -1,5 +1,6 @@
-import Image from "next/image";
 import { prisma } from '@/prisma';
+import Header from "./home-page-components/Header";
+import HeroSection from "./components/HeroSection";
 
 export default async function Home() {
 
@@ -8,8 +9,11 @@ export default async function Home() {
   console.log(products)
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-     Hellow world
-    </main>
+    <>
+      <main className="">
+      <Header></Header>
+      <HeroSection></HeroSection>
+      </main>
+    </>
   );
 }
