@@ -1,7 +1,11 @@
+'use client'
 import React from 'react'
+import { useState } from 'react'
 
-export default function Carrousel() {
+export default function Carousel() {
   return (
-    <div>Carrousel</div>
+    <div className='h-screen bg-carousel-gradient bg-full'>
+      <div >hello</div>
+    </div>
   )
 }
