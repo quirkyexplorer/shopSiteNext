@@ -3,7 +3,7 @@ import React, {useState, useRef, useCallback} from 'react'
 
 import '@uploadcare/react-uploader/core.css'
 import { FileUploaderRegular } from '@uploadcare/react-uploader';
-import { OutputFileEntry } from '@uploadcare/blocks';
+// import { OutputFileEntry } from '@uploadcare/blocks';
 
 import st from './RegularView.module.css';
 
@@ -11,15 +11,15 @@ import st from './RegularView.module.css';
 
 export default function GalleryUploader() {
 
-  const [files, setFiles ] = useState<OutputFileEntry<'success'>[]>([]);
-  const dataOutputRef = useRef();
+  // const [files, setFiles ] = useState<OutputFileEntry<'success'>[]>([]);
+  // const dataOutputRef = useRef();
 
 
-  const handleChangeEvent = (files) => {
-    console.log('change event payload:', files);
+  // const handleChangeEvent = (files) => {
+  //   console.log('change event payload:', files);
 
-    setFiles([...files.allEntries.filter(f => f.status === 'success')] as OutputFileEntry<'success'>[]);
-  };
+  //   setFiles([...files.allEntries.filter(f => f.status === 'success')] as OutputFileEntry<'success'>[]);
+  // };
 
   // const handleUploaderEvent = useCallback((e) => {
   //   const { data } = e.detail;
@@ -32,7 +32,7 @@ export default function GalleryUploader() {
       
       {/* <FileUploaderRegular onChange={handleChangeEvent} pubkey="b739047dcf890df23203"/> */}
 
-      <div className={st.previews}>
+      {/* <div className={st.previews}>
         {files.map((file) => (
           <div key={file.uuid} className={st.previewWrapper}>
             <img
@@ -53,7 +53,7 @@ export default function GalleryUploader() {
             </p>
           </div>
         ))}
-      </div>
+      </div> */}
       {/* <lr-config
               ctx-name="my-uploader"
               pubkey="b739047dcf890df23203"
