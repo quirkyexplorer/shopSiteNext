@@ -7,8 +7,6 @@ export default async function Home() {
 
   const products = await prisma.product.findMany();
 
-  console.log(products)
-
   return (
     <>
       <main className="flex flex-col">
