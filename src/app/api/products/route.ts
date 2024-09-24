@@ -3,7 +3,7 @@ import { prisma, Prisma } from '@/prisma/index';
 import { Product } from '@/prisma/index'
 
 export async function POST(request: NextRequest) {
-      let result;
+      
       try {
         const data = await request.json();
 
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
 
 /// TODO FIX 
 export async function PUT(request: NextRequest) {
-  let result;
+
   try {
     const data = await request.json();
 

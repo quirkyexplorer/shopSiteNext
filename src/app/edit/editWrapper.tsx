@@ -1,14 +1,32 @@
 'use client'
 import React, { useState } from 'react'
 import GalleryUploader from '../components/GalleryUploader';
+import { OutputFileEntry } from '@uploadcare/blocks';
+import { Product } from '@prisma/client';
+
+export const emptyProduct: Product = {
+  id: NaN, // we are trying this one 
+  price: 0,
+  title: '',
+  description: '',
+  productGallery: []
+}
+
 
 export default function EditWrapper()  {
   const [formData, setFormData] = useState({
     price: 0,
     title: '',
-    decription: '',
-    imageUuid: []
+    description: '',
+    productGallery: []
   });
+
+  // state for gallery image files
+  const [galleryPics, setGalleryPics] = useState<OutputFileEntry[]>([]);
+
+  const [galleryUrls, setGalleryUrls] = useState<string[]>([]);
+
+  //const defaultValues = 
 
   const handleInputChange = (e: any) => {
     const {name, value} = e.target;
@@ -25,9 +43,29 @@ export default function EditWrapper()  {
     e.preventDefault();
     console.log('formData', formData);
 
-
-
     try {
+      const response = await fetch('/api/products', {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+        }, 
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+
+      console.log("server response", data);
+
+      setFormData({
+        price: 0,
+        title: '',
+        description: '',
+        productGallery: []
+      })
 
     } catch(error) {
       console.log('Error during fetch:', error);
@@ -71,13 +109,19 @@ export default function EditWrapper()  {
             <input 
               type="text" 
               className='bg-darkBlue rounded-md outline-none' 
-              name='decription'
-              value={formData.decription}
+              name='description'
+              value={formData.description}
               onChange={handleInputChange}
               />
           </div>
           <p className='text-teal font-bold'>Fotos:</p> 
-          <GalleryUploader/>
+          <GalleryUploader
+              files={galleryPics} 
+              onChange={setGalleryPics}
+              productGallery={formData.productGallery}
+              addUrl={setGalleryUrls}
+              urlArray={[...galleryUrls]}
+          />
           <button type='submit'onClick={(e) => handleSubmit(e)} className='bg-darkBlue self-center w-32 font-bold rounded-2xl p-4 mt-4'>Guardar</button>
         </form>
       </div>

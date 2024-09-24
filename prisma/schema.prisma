@@ -17,7 +17,7 @@ model Product {
     price         Int
     title         String
     description   String
-    imageUuid     String[]    
+    productGallery     String[]    
 }
 
 model Image {
