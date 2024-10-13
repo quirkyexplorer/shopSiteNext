@@ -8,6 +8,13 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+.uploadcare-config {
+	--darkmode: 0;
+	--h-accent: 223;
+	--s-accent: 100%;
+	--l-accent: 61%;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

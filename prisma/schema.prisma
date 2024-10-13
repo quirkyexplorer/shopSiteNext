@@ -13,11 +13,11 @@ datasource db {
 }
 
 model Product {
-    id            Int         @id @default(autoincrement())
-    price         Int
-    title         String
-    description   String
-    productGallery     String[]    
+    id                 Int         @id @default(autoincrement())
+    price              Int
+    title              String
+    description        String
+    productGallery     String    
 }
 
 model Image {
