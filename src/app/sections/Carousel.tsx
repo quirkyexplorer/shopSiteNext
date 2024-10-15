@@ -1,17 +1,12 @@
 'use client'
 import React from 'react'
-import { useState } from 'react';
-import { IKImage } from "imagekitio-next";
+import { useState, CSSProperties } from 'react';
+import { IKImage, ImageKitProvider } from "imagekitio-next";
+import Image from 'next/image';
+import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-// const getUploadcareImageUrl = (uuid, transformation) => {
-//   const baseUrl = `https://ucarecdn.com/${uuid}`; 
-//   const transformationString = transformation.join("");
-//   return `${baseUrl}/${transformationString}`
-// }
-
-// async function fetcher() {
-//   const productsResponse = await fetch('http:/local')
-// }
 
 interface CarouselProps {
    products: { id: number; price: number; title: string; description: string; productGallery: string; }[]; 
@@ -43,29 +38,90 @@ export default function Carousel({products}: CarouselProps) {
     return ''
   }
 
+  const wrapper = {
+    maxWidth: "1260px",
+    overflow: "hidden"
+  }
+
+  const trackStyle = {
+     display: 'flex',
+     transition: "transform 1.5s ease",
+     transform: `translateX(-${currentIndex * 420}px)`,
+     gap: '20px',
+     paddingLeft: '10px'
+  }
+
+  const slide = {
+    maxWidth: '400px',
+    borderRadius: '3%',
+    boxShadow: '0px 0px 10px 1px hsl(265, 100%, 50%)',
+  }
+
+  const buttonLeft: CSSProperties = {
+    display: 'flex',
+    position: 'absolute',
+    justifyContent: 'center',   // Center the icon inside the button
+    alignItems: 'center',       // Center the icon inside the button
+    borderRadius: '50%',
+    width: '40px',              // Set width for the circle
+    height: '40px',             // Set height for the circle
+    backgroundColor: 'hsl(315, 100%, 50%)', // Background color
+    top: '50%',
+    left: '8%',
+  };
+
+  const buttonRight: CSSProperties = {
+    display: 'flex',
+    position: 'absolute',
+    justifyContent: 'center',   // Center the icon inside the button
+    alignItems: 'center',       // Center the icon inside the button
+    borderRadius: '50%',
+    width: '40px',              // Set width for the circle
+    height: '40px',             // Set height for the circle
+    backgroundColor: 'hsl(315, 100%, 50%)', // Background color
+    top: '50%',
+    right: '8%',
+  }
+
+
   return (
-    <div className='h-screen bg-carousel-gradient bg-full flex justify-center items-center'>
-        <div className=' '>
+    <div id='main'  className='h-screen bg-carousel-gradient bg-full flex justify-center items-center relative'>
+      {/* */}
+      <div id='wrapper' style={wrapper}>
 
-          <div style={{ transform: `translateX(-${currentIndex * 320}px)` }}  className='flex gap-4 items-center'>
-            
+          <div id='track' style={trackStyle} >
+          {/* <ImageKitProvider urlEndpoint={urlEndpoint}  > */}
             {products.map((product, id) => (
+              // <div key={`img${id}`} className='min-w-[500px] overflow-hidden' >  
 
-              <div key={`img${id}`}  className='rounded-xl'>  
                 <IKImage 
-                      urlEndpoint={urlEndpoint}  
-                      path={getProductpath(id)}
-                      width="350"
-                      height="450"
+                      key={id}
+                      urlEndpoint={urlEndpoint}
+                      src={getProductpath(id)}
+                      height={800}
+                      width={500}
                       alt={product.title}
-                      className='rounded-xl'
+                      style={slide}
                 />
-              </div>
+              // </div>
               
-            ))}
+            ))}            
+            
+          {/* </ImageKitProvider>    */}
+
           </div>
 
-        </div>
+            {/* navigation buttons or indicators */}
+            <button style={buttonLeft} onClick={handlePrev}>
+              <FontAwesomeIcon icon={faCircleChevronLeft}  size="3x" />
+            </button>
+            <button style={buttonRight} onClick={handleNext}>
+              <FontAwesomeIcon icon={faCircleChevronRight} size="3x"/>
+            </button>
+            
+        
+
+      </div>
 
     </div>
   )

@@ -101,8 +101,8 @@ export default function EditWrapper()  {
                 })
                 .then((result) => {
                  
-                  //console.log("result", result.filePath);
-                  setGalleryUrls((prevPaths) => [...prevPaths, result.filePath]);
+                  console.log("result", result.url);
+                  setGalleryUrls((prevPaths) => [...prevPaths, result.url]);
                 })
                 .catch((error) => {
                   console.log("upload failed, error", error);
