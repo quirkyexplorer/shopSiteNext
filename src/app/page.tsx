@@ -5,9 +5,16 @@ import Carousel from './sections/Carousel';
 
 export default async function Home() {
 
-  const products = await prisma.product.findMany();
+  let products:any = [];
 
-  console.log('products',products);
+  try {
+    products = await prisma.product.findMany(); 
+    console.log('products',products);
+  } catch (error) {
+    console.error("Error fetching products: ", error);
+  }
+
+
 
   return (
     <>
