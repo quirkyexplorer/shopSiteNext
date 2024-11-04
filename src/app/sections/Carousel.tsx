@@ -39,7 +39,7 @@ export default function Carousel({products}: CarouselProps) {
   }
 // making css objects as tailwind does not support natively some of the motion features
   const wrapper = {
-    maxWidth: "8000px",
+    maxWidth: "1260px",
     
     overflow: "hidden"
   }
