@@ -6,11 +6,13 @@ import Carousel from './sections/Carousel';
 export default async function Home() {
 
   let products:any = [];
+  let error: any = null;
 
   try {
     products = await prisma.product.findMany(); 
     console.log('products',products);
-  } catch (error) {
+  } catch (e) {
+    error = e;
     console.error("Error fetching products: ", error);
   }
 
@@ -21,7 +23,13 @@ export default async function Home() {
       <main className="flex flex-col">
       <Header></Header>
       <HeroSection></HeroSection>
-      <Carousel products={products} ></Carousel>
+      {products.length > 0 ? (
+          <Carousel products={products}></Carousel>
+        ) : (
+          <p className="text-red-500 font-bold text-center my-8">
+            Error fetching products. Please try again later.
+          </p>
+        )}
       
       </main>
     </>
