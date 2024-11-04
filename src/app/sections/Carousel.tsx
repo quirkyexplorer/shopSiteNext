@@ -39,16 +39,18 @@ export default function Carousel({products}: CarouselProps) {
   }
 // making css objects as tailwind does not support natively some of the motion features
   const wrapper = {
-    maxWidth: "1260px",
+    maxWidth: "8000px",
+    
     overflow: "hidden"
   }
 
   const trackStyle = {
+      
      display: 'flex',
      transition: "transform 1.5s ease",
      transform: `translateX(-${currentIndex * 420}px)`,
      gap: '20px',
-     paddingLeft: '10px'
+     paddingLeft: '10px', 
   }
 
   const slide = {
@@ -66,6 +68,7 @@ export default function Carousel({products}: CarouselProps) {
     width: '40px',              // Set width for the circle
     height: '40px',             // Set height for the circle
     backgroundColor: 'hsl(315, 100%, 50%)', // Background color
+    transition: 'opacity 1s ease',
     top: '50%',
     left: '8%',
   };
@@ -79,21 +82,24 @@ export default function Carousel({products}: CarouselProps) {
     width: '40px',              // Set width for the circle
     height: '40px',             // Set height for the circle
     backgroundColor: 'hsl(315, 100%, 50%)', // Background color
+    transition: 'opacity 1s ease',
     top: '50%',
     right: '8%',
   }
 
 
   return (
-    <div id='main'  className='h-screen bg-carousel-gradient bg-full flex justify-center items-center relative'>
+    <div id='main'  className='h-screen w-full bg-carousel-gradient bg-full flex justify-center items-center relative'>
       {/* */}
-      <div id='wrapper' style={wrapper}>
+      <div id='wrapper' 
+        
+        style={wrapper} 
+        //className="max-w-[960px] md:max-w-[645px] sm:max-w-[325px] mx-auto"
+      >
 
           <div id='track' style={trackStyle} >
           {/* <ImageKitProvider urlEndpoint={urlEndpoint}  > */}
-            {products.map((product, id) => (
-              // <div key={`img${id}`} className='min-w-[500px] overflow-hidden' >  
-
+            {products.map((product, id) => ( 
                 <IKImage 
                       key={id}
                       urlEndpoint={urlEndpoint}
@@ -103,19 +109,23 @@ export default function Carousel({products}: CarouselProps) {
                       alt={product.title}
                       style={slide}
                 />
-              // </div>
-              
             ))}            
             
           {/* </ImageKitProvider>    */}
-
           </div>
 
             {/* navigation buttons or indicators */}
-            <button style={buttonLeft} onClick={handlePrev}>
+            <button style={buttonLeft} onClick={handlePrev}
+            // adding transitions
+              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.5'}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+            >
               <FontAwesomeIcon icon={faCircleChevronLeft}  size="3x" />
             </button>
-            <button style={buttonRight} onClick={handleNext}>
+            <button style={buttonRight} onClick={handleNext}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.5'}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+            >
               <FontAwesomeIcon icon={faCircleChevronRight} size="3x"/>
             </button>
             
