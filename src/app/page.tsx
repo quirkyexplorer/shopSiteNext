@@ -20,7 +20,7 @@ export default async function Home() {
 
   return (
     <>
-      <main className="flex flex-col">
+      <main className="flex flex-col ">
       <Header></Header>
       <HeroSection></HeroSection>
       {products.length > 0 ? (

@@ -70,7 +70,8 @@ export default function Carousel({products}: CarouselProps) {
     backgroundColor: 'hsl(315, 100%, 50%)', // Background color
     transition: 'opacity 1s ease',
     top: '50%',
-    left: '8%',
+    left: '10%',
+    transform: 'translateY(-50%)',
   };
 
   const buttonRight: CSSProperties = {
@@ -84,7 +85,8 @@ export default function Carousel({products}: CarouselProps) {
     backgroundColor: 'hsl(315, 100%, 50%)', // Background color
     transition: 'opacity 1s ease',
     top: '50%',
-    right: '8%',
+    transform: 'translateY(-50%)',
+    right: '10%',
   }
 
 
