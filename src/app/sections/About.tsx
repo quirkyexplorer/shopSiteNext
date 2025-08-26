@@ -5,7 +5,7 @@ export default function About () {
 //  fix the height and record height as is used in css and tailwind parallel to each other. 
     return (
         <>
-                <h1 className="">About me </h1>
+                <h1 className="h-screen">About me </h1>
         </>
     );
 };
