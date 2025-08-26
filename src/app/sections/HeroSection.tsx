@@ -7,10 +7,15 @@ import { IKImage, ImageKitProvider } from "imagekitio-next";
 
 
 export default function HeroSection() {
+  // in next we can fetch the endpoing with the following line
   const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
+
   const handleClick =() => {
-    console.log('hello there sexy');
+    // FIX ME 
+    // should redirect to the actual place. a list of styles in cards. not yet developed. 
   }
+
+
   return (
     <div className='flex items-center justify-center bg-conic-gradient bg-full h-screen'>
       <div className="grid grid-cols-1 lg:grid-cols-2  max-w-7xl px-4">

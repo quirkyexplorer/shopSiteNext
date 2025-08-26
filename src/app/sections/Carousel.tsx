@@ -7,7 +7,7 @@ import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
+// this is a typescript object - what is doing is defining the object type for the products
 interface CarouselProps {
    products: { id: number; price: number; title: string; description: string; productGallery: string; }[]; 
 
@@ -15,9 +15,9 @@ interface CarouselProps {
 
 export default function Carousel({products}: CarouselProps) {
   const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
-  //const productGalleryPaths = 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+// FIX ME: CONCEPTUALLY HOW WOULD YOU EXPLAIN THIS CODE ?
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === products.length - 3 ? prevIndex : prevIndex + 1
@@ -37,10 +37,10 @@ export default function Carousel({products}: CarouselProps) {
     }
     return ''
   }
+
 // making css objects as tailwind does not support natively some of the motion features
   const wrapper = {
     maxWidth: "1260px",
-    
     overflow: "hidden"
   }
 
